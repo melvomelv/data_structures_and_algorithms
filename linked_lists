@@ -1,0 +1,262 @@
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None 
+        
+
+class Node_0:
+    def __init__(self, info):
+        self.info = info
+        self.link = None
+        
+        
+ class MyLinkedList:
+
+    def __init__(self, value):
+        """
+        Initialize your data structure here.
+        """
+        self.head = Node(value)
+        self.tail = self.head
+        self.length = 1
+
+    def get(self, index: int) -> int:
+        """
+        Get the value of the index-th node in the linked list. If the index is invalid, return -1.
+        """
+        if (index == 0):
+            return self.head.value
+        if (index > self.length):
+            return -1
+        i = 0
+        curr = self.head
+        while(i <= index):
+            if  (i == index):
+                return curr.value
+            curr = curr.next
+            i +=1
+    
+        
+
+    def addAtHead(self, val: int) -> None:
+        """
+        Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list.
+        """
+        curr = Node(val)
+        curr.next = self.head
+        self.head = curr
+        self.length += 1
+        
+
+    def addAtTail(self, val: int) -> None:
+        """
+        Append a node of value val to the last element of the linked list.
+        """
+        self.tail.next = Node(val)
+        self.tail = self.tail.next
+        self.length += 1
+        
+
+    def addAtIndex(self, index: int, val: int) -> None:
+        """
+        Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted.
+        """
+        if (index >self.length):
+            return -1
+        elif( index == self.length):
+            self.addAtTail(val)
+        else:
+            cur = Node(val)
+            prev = self.head
+            i = 0
+            while(i < index-1):
+                prev = prev.next
+                i += 1
+            
+            cur.next = prev.next
+            prev.next = cur
+            self.length += 1
+        
+
+    def deleteAtIndex(self, index: int) -> None:
+        """
+        Delete the index-th node in the linked list, if the index is valid.
+        """
+        if (index >= self.length):
+            return -1
+        elif(index == self.length -1):
+            curr = self.head
+            
+            while( curr.next is not self.tail):
+                curr = curr.next
+            
+            self.tail = curr
+            self.tail.next = None
+            self.length -= 1
+            
+        elif(index == 0):
+            prev = self.head
+            self.head = self.head.next
+            prev.next = None
+            self.length -= 1
+            
+        else:
+            i = 0
+            curr = self.head
+            while(i < index):
+                if(i == index -1):
+                    break
+                curr = curr.next
+                i +=1
+                
+            curr.next = curr.next.next
+            
+        
+    def printer(self):
+        i = self.head
+        while i is not None:
+            print(i.value)
+            i = i.next
+            
+    class linked_list:
+    
+    def __init__(self):
+        
+        self.start = None
+        
+        
+    def display_list(self):
+        
+        i = self.start
+        
+        while i is not None:
+            print(i.info)
+            i = i.link
+    
+    def count_nodes(self):
+        
+        count = 1
+        i = self.head 
+        
+        if i is None:
+            return 0
+        
+        while i is not None:
+            i = i.link
+            count += 1
+            
+        return count
+        
+    
+    def search(self, x):
+        
+        i = self.start
+        
+        while i is not None:
+            
+            if i.info is x:
+                break 
+                
+            i = i.link
+            
+        if i is None:
+            return str("Value not found")
+        
+        if i is not None:
+            return str("Value is present in the list")
+    
+    def insert_in_beginning(self, data):
+        
+        temp = Node_0(data)
+        temp.link = self.start
+        self.start = temp
+    
+    def insert_at_end(self, data):
+        
+        i = self.start
+        
+        while i.link is not None:
+            i = i.link
+        
+        i.link = Node_0(data)
+    
+    def insert_at_position(self, data, k):
+        
+        count = 1
+        temp = node_0(data)
+        
+        i = self.start
+        
+        while i is not None:
+            
+            if k == temp:
+                temp.link = i.link
+                i.link = temp
+            
+            i = i.link
+        
+                
+    
+    def delete_node(self, x):
+        
+        i = self.start
+        last = i
+        
+        while i is not None:
+            
+            if i.link.info == x:
+                i.link = i.link.link
+            i = i.link
+                
+                
+                
+    
+    def delete_first_node(self):
+        self.start = self.start.link
+    
+    def delete_last_node(self):
+        
+        i = i.start
+        
+        while i is not i.link.link:
+            i = i.link
+            
+        i.link = None
+    
+    def reverse_list(self):
+        
+        p = self.start
+        prev = None
+        
+        while p is not None:
+            next = p.link
+            p.link = prev
+            prev = p
+            p = next
+        
+        self.start = prev
+        
+    
+    def bubble_sort_exdata(self):
+        
+        end = None 
+        
+        while end != self.start.link:
+            
+            p = self.start
+            q = p.link
+            
+            while p.link != end:
+                
+                if p.info > q.info: 
+                    
+                    p.info,q.info = q.info,p.info
+                    
+                p = p.link
+                q = p.link
+            
+            end = p 
+            
+            
+       
+    
